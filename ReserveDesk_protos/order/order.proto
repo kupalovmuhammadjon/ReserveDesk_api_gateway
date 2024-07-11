@@ -1,0 +1,59 @@
+syntax =  "proto3";
+
+option go_package = "genproto/order";
+
+package order;
+
+service OrderService {
+    rpc CreateOrder(Order) returns (Void) {}
+    rpc UpdateOrder(Updateorder) returns (Void) {}
+    rpc DeleteOrder(Id) returns (Void) {}
+    rpc GetOrderById(Id) returns(OrderInfo) {}
+    rpc GetAllOrder(OrderFilter) returns (Orders) {}
+}
+
+message Order  {
+    string reservation_id = 2;
+    string menu_item_id = 3;
+    int32  quantity = 4;
+}
+
+message Updateorder  {
+    string Id = 1;
+    string reservation_id = 2;
+    string menu_item_id = 3;
+    int32  quantity = 4;
+}
+
+message Orders {
+    repeated OrderInfo orders = 1;
+}
+
+message OrderInfo {
+    string id = 1;
+    string reservation_id = 2;
+    string menu_item_id = 3;
+    int32  quantity = 4;
+    string created_at = 5;
+    string updated_at = 6;
+}
+
+message Void {}
+
+message Id {
+    string id = 1;
+}
+
+message OrderFilter {
+    string reservation_id = 2;
+    string menu_item_id = 3;
+    int32  quantity = 4;
+    int32 limit = 5;
+    int32 offset = 6;
+}
+
+
+
+
+
+
