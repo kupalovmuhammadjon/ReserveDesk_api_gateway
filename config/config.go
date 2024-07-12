@@ -3,7 +3,6 @@ package config
 import (
 	"log"
 	"os"
-
 	"github.com/spf13/cast"
 
 	"github.com/joho/godotenv"
