@@ -20,7 +20,7 @@ import (
 // @Accept  json
 // @Produce  json
 // @Param id path string true "User ID"
-// @Param user body pb.User true "User data"
+// @Param user body auth.User true "User data"
 // @Success 202 {string} string "SUCCESS"
 // @Failure 400 {object} gin.H "StatusBadRequest"
 // @Failure 500 {object} gin.H "StatusInternalServerError"
@@ -118,7 +118,6 @@ func (h *Handler) DeleteAuth(c *gin.Context) {
 // @Router /auths/profile/:id [get]
 func (h *Handler) ShowProfile(c *gin.Context) {
 	id := c.Param("id")
-
 	nestedctx, cancel := context.WithTimeout(c, time.Second*5)
 	defer cancel()
 
