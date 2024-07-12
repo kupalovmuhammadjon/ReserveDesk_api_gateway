@@ -3,7 +3,7 @@ github.com/cncf/xds/go v0.0.0-20240423153145-555b57ec207b h1:ga8SEFjZ60pxLcmhnTh
 github.com/cncf/xds/go v0.0.0-20240423153145-555b57ec207b/go.mod h1:W+zGtBO5Y1IgJhy4+A9GOqVhqLpfZi+vwmdNXUehLA8=
 
 go.sum database tree
-28189894
-2jxhMMQ1Ji3jS/l7JUOPTq63VsiWsXDZ5aT3P9UuFPI=
+28210906
+nbxTUpdhHxSNSls+Z+uSwK5UJwEiGuOppviL0OrBeMg=
 
-— sum.golang.org Az3grtTwU6wdL+ULS6X0ikrhrFJF61pwKZh0v/Pw8WisaytuD8swtclvpcGtTmQ3ae1dEAnzyWU4/5zYaT7Y9OTaLQ4=
+— sum.golang.org Az3grhr2q467tCk7PqfY63xb+cdqIvwB0oi+aULGBR2i/J0FX/PDHJXbobK+fDpLDlz1Qox9hXlKZdt63+1o9dFVdAw=

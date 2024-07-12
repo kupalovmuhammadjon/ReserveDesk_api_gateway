@@ -3,7 +3,7 @@ google.golang.org/genproto/googleapis/api v0.0.0-20240528184218-531527333157 h1:
 google.golang.org/genproto/googleapis/api v0.0.0-20240528184218-531527333157/go.mod h1:99sLkeliLXfdj2J75X3Ho+rrVCaJze0uwN7zDDkjPVU=
 
 go.sum database tree
-28189192
-/h+ySKLk+L40zhSrmx4T6ZmzVElxjMyvv+uRUlvXW54=
+28210896
+M0Fq73D9V2GfvFbYB7Mu9efUDIssn2t4VIDwEKylY6w=
 
-— sum.golang.org Az3grj81POdVeLBdtROsKbD0SdO48zkjUpQ5H79iWkTa40XX0ghqjwZ7T8JVKnn106ERdUbBuNQxCiCK9HpWQ7PPyQc=
+— sum.golang.org Az3grhAERenb0CN5FMmyhTunC8B9daNNKXfm9svN+ZZpeeSbwyj5T4Be8kCVI0Lmc6C3N9bmdPsZYP5msSS0dOpItQM=
