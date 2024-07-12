@@ -1,7 +1,7 @@
 package token
 
 import (
-	"api_service/config"
+	"api_gateway_service/config"
 	"fmt"
 
 	"github.com/golang-jwt/jwt"
@@ -25,7 +25,7 @@ func ExtractClaims(tokenStr string) (jwt.MapClaims, error) {
 		if _, ok := t.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method: %v", t.Header["alg"])
 		}
-		return []byte(config.Login().SIGNING_KEY), nil
+		return []byte(config.Load().SIGNING_KEY), nil
 	})
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse token: %w", err)

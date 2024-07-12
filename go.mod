@@ -1,4 +1,5 @@
-module api_service
+module api_gateway_service
+
 
 go 1.22.5
 

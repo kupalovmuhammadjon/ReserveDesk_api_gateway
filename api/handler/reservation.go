@@ -1,7 +1,7 @@
 package handler
 
 import (
-	pb "api_service/genproto/reservations"
+	pb "api_gateway_service/genproto/reservations"
 	"context"
 	"encoding/json"
 	"fmt"

@@ -1,3 +1,6 @@
 .env
+.vscode
 Makefile
 .idea
+Makefile
+>>>>>>> origin/master

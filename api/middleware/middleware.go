@@ -1,7 +1,8 @@
 package middleware
 
 import (
-	"api_service/api/token"
+
+	"api_gateway_service/api/token"
 	"net/http"
 	"github.com/gin-gonic/gin"
 )
@@ -31,6 +32,7 @@ func JWTMiddleware() gin.HandlerFunc {
 			})
 			return
 		}
+
 
 		ctx.Set("calims", claims)
 		ctx.Next()

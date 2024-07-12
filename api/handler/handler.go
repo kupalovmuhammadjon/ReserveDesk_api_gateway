@@ -1,36 +1,33 @@
 package handler
 
 import (
-	"api_service/config"
-	pbuAuthservice "api_service/genproto/auth"
-	pbuOrderservice "api_service/genproto/order"
-	pbuReservation "api_service/genproto/reservations"
-	"api_service/pkg"
-	pbuMenu "api_gateway/genproto/menu"
-	pbuPayments "api_gateway/genproto/payments"
-	pbuRestaurant "api_gateway/genproto/restaurant"
+	"api_gateway_service/config"
+	pbAuthservice "api_gateway_service/genproto/auth"
+	menu "api_gateway_service/genproto/menu"
+	pbOrderservice "api_gateway_service/genproto/order"
+	payments "api_gateway_service/genproto/payments"
+	pbReservation "api_gateway_service/genproto/reservations"
+	restaurant "api_gateway_service/genproto/restaurant"
+	"api_gateway_service/pkg"
 )
 
 type Handler struct {
-	ClientAuthentication pbuAuthservice.AuthClient
-	ClientOrder          pbuOrderservice.OrderServiceClient
-	ClientReservation    pbuReservation.ReservationServiceClient
-	ClientRestaurant     pbuRestaurant.RestaurantClient
-	ClientMenu           pbuMenu.MenuServiceClient
-	ClienstPayment       pbuPayments.PaymentsClient
+	ClientAuthentication pbAuthservice.AuthClient
+	ClientOrder          pbOrderservice.OrderServiceClient
+	ClientReservation    pbReservation.ReservationServiceClient
+	Menu                 menu.MenuServiceClient
+	Payments             payments.PaymentsClient
+	Restaurant           restaurant.RestaurantClient
+>>>>>>> origin/master
 }
 
 func NewHandler(cfg *config.Config) *Handler {
 	return &Handler{
 		ClientAuthentication: pkg.NewAuthenticationClient(cfg),
-		ClientOrder: pkg.NewOrderClient(cfg),
-		ClientReservation: pkg.NewReservationClient(cfg),
-
-
-// func NewHendler(R restaurant.RestaurantClient, M menu.MenuServiceClient, P payments.PaymentsClient) *Handler {
-// 	return &Handler{
-// 		Restaurant: R,
-// 		Menu:       M,
-// 		Payments:   P,
+		ClientOrder:          pkg.NewOrderClient(cfg),
+		ClientReservation:    pkg.NewReservationClient(cfg),
+		Menu:                 pkg.NewMenuClient(cfg),
+		Payments:             pkg.NewPaymentsClient(cfg),
+		Restaurant:           pkg.NewRestaurantClient(cfg),
 	}
 }

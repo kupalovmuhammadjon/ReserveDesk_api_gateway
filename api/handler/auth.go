@@ -1,7 +1,7 @@
 package handler
 
 import (
-	pb "api_service/genproto/auth"
+	pb "api_gateway_service/genproto/auth"
 	"context"
 	"encoding/json"
 	"fmt"

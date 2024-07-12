@@ -1,9 +1,9 @@
 package api
 
 import (
-	"api_service/api/handler"
-	"api_service/api/middleware"
-	"api_service/config"
+	"api_gateway_service/api/handler"
+	"api_gateway_service/api/middleware"
+	"api_gateway_service/config"
 
 	"github.com/gin-gonic/gin"
 )

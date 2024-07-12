@@ -1,8 +1,9 @@
 package main
 
 import (
-	"api_service/api"
-	"api_service/config"
+
+	"api_gateway_service/api"
+	"api_gateway_service/config"
 )
 
 func main() {
