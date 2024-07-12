@@ -21,8 +21,8 @@ import (
 // @Produce  json
 // @Param reservation body reservation.Reservation true "Order data"
 // @Success 202 {string} string "SUCCESS"
-// @Failure 400 {object} gin.H "StatusBadRequest"
-// @Failure 500 {object} gin.H "StatusInternalServerError"
+// @Failure 400 {object} models.Error "StatusBadRequest"
+// @Failure 500 {object} models.Error "StatusInternalServerError"
 // @Router /reservations [post]
 func (h *Handler) CreateReservation(c *gin.Context) {
 	reservation := pb.Reservation{}
@@ -63,8 +63,8 @@ func (h *Handler) CreateReservation(c *gin.Context) {
 // @Param  id path string true "User ID"
 // @Param reservation body reservation.Reservation true "Order data"
 // @Success 202 {string} string "SUCCESS"
-// @Failure 400 {object} gin.H "StatusBadRequest"
-// @Failure 500 {object} gin.H "StatusInternalServerError"
+// @Failure 400 {object} models.Error "StatusBadRequest"
+// @Failure 500 {object} models.Error "StatusInternalServerError"
 // @Router /reservations/:id [put]
 func (h *Handler) UpdateReservation(c *gin.Context) {
 	id := c.Param("id")
@@ -127,8 +127,8 @@ func (h *Handler) UpdateReservation(c *gin.Context) {
 // @Produce  json
 // @Param  id path string true "User ID"
 // @Success 202 {string} string "SUCCESS"
-// @Failure 400 {object} gin.H "StatusBadRequest"
-// @Failure 500 {object} gin.H "StatusInternalServerError"
+// @Failure 400 {object} models.Error "StatusBadRequest"
+// @Failure 500 {object} models.Error "StatusInternalServerError"
 // @Router /reservations/:id [delete]
 func (h *Handler) DeleteReservation(c *gin.Context) {
 	id := c.Param("id")
@@ -169,8 +169,8 @@ func (h *Handler) DeleteReservation(c *gin.Context) {
 // @Produce  json
 // @Param  id path string true "User ID"
 // @Success 202 {string} string "SUCCESS"
-// @Failure 400 {object} gin.H "StatusBadRequest"
-// @Failure 500 {object} gin.H "StatusInternalServerError"
+// @Failure 400 {object} models.Error "StatusBadRequest"
+// @Failure 500 {object} models.Error "StatusInternalServerError"
 // @Router /reservations/:id [get]
 func (h *Handler) GetByIdReservation(c *gin.Context) {
 	id := c.Param("id")
@@ -201,6 +201,16 @@ func (h *Handler) GetByIdReservation(c *gin.Context) {
 	c.JSON(201, reservation)
 }
 
+// @Summary Get all Reservations
+// @Description Get all reservations authentication reservation body.
+// @Tags reservation
+// @Accept  json
+// @Produce  json
+// @Param  id path string true "User ID"
+// @Success 202 {string} string "SUCCESS"
+// @Failure 400 {object} models.Error "StatusBadRequest"
+// @Failure 500 {object} models.Error "StatusInternalServerError"
+// @Router /reservations/:id [get]
 func (h *Handler) GetAllReservation(c *gin.Context) {
 	reservationF := pb.ReservationFilter{}
 

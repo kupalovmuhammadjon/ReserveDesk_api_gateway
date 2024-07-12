@@ -21,8 +21,8 @@ import (
 // @Produce  json
 // @Param order body order.Order true "Order data"
 // @Success 202 {string} string "SUCCESS"
-// @Failure 400 {object} gin.H "StatusBadRequest"
-// @Failure 500 {object} gin.H "StatusInternalServerError"
+// @Failure 400 {object} models.Error "StatusBadRequest"
+// @Failure 500 {object} models.Error "StatusInternalServerError"
 // @Router /orders [post]
 func (h *Handler) CreateOrder(c *gin.Context) {
 	order := pb.Order{}
@@ -63,8 +63,8 @@ func (h *Handler) CreateOrder(c *gin.Context) {
 // @Param  id path string true "User ID"
 // @Param order body order.Updateorder true "Order data"
 // @Success 202 {string} string "SUCCESS"
-// @Failure 400 {object} gin.H "StatusBadRequest"
-// @Failure 500 {object} gin.H "StatusInternalServerError"
+// @Failure 400 {object} models.Error "StatusBadRequest"
+// @Failure 500 {object} models.Error "StatusInternalServerError"
 // @Router /orders/:id [put]
 func (h *Handler) UpdateOrder(c *gin.Context) {
 	id := c.Param("id")
@@ -120,8 +120,8 @@ func (h *Handler) UpdateOrder(c *gin.Context) {
 // @Produce  json
 // @Param  id path string true "User ID"
 // @Success 202 {string} string "SUCCESS"
-// @Failure 400 {object} gin.H "StatusBadRequest"
-// @Failure 500 {object} gin.H "StatusInternalServerError"
+// @Failure 400 {object} models.Error "StatusBadRequest"
+// @Failure 500 {object} models.Error "StatusInternalServerError"
 // @Router /orders/:id [delete]
 func (h *Handler) DeleteOrder(c *gin.Context) {
 	id := c.Param("id")
@@ -160,8 +160,8 @@ func (h *Handler) DeleteOrder(c *gin.Context) {
 // @Produce  json
 // @Param  id path string true "User ID"
 // @Success 202 {string} string "SUCCESS"
-// @Failure 400 {object} gin.H "StatusBadRequest"
-// @Failure 500 {object} gin.H "StatusInternalServerError"
+// @Failure 400 {object} models.Error "StatusBadRequest"
+// @Failure 500 {object} models.Error "StatusInternalServerError"
 // @Router /orders/:id [get]
 func (h *Handler) GetByIdOrder(c *gin.Context) {
 	id := c.Param("id")
@@ -201,8 +201,8 @@ func (h *Handler) GetByIdOrder(c *gin.Context) {
 // @Produce  json
 // @Param order body order.OrderFilter true "Order data"
 // @Success 202 {string} string "SUCCESS"
-// @Failure 400 {object} gin.H "StatusBadRequest"
-// @Failure 500 {object} gin.H "StatusInternalServerError"
+// @Failure 400 {object} models.Error "StatusBadRequest"
+// @Failure 500 {object} models.Error "StatusInternalServerError"
 // @Router /orders/:id [get]
 func (h *Handler) GetAllOrder(c *gin.Context) {
 	orderfilter := pb.OrderFilter{}
