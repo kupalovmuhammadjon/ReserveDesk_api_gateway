@@ -51,6 +51,7 @@ message Menus {
 }
 
 message MenuFilter {
+    string Id = 1;
     string item_type = 2; 
     string name = 3;
     int32 price = 4;

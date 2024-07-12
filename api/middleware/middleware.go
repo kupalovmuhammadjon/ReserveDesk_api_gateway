@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"api_gateway/api/token"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

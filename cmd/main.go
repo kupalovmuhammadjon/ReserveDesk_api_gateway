@@ -1,13 +1,8 @@
 package main
 
-<<<<<<< HEAD
-
-func main() {
-	
-=======
 import (
-	"api_gateway/api"
-	"api_gateway/config"
+	"api_gateway_service/api"
+	"api_gateway_service/config"
 )
 
 func main() {
@@ -15,5 +10,4 @@ func main() {
 
 	router := api.NewRouter(cfg)
 	router.Run(cfg.HTTP_PORT)
->>>>>>> origin/master
 }

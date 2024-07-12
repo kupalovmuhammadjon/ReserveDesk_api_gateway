@@ -17,7 +17,7 @@ type Config struct {
 	SIGNING_KEY         string
 }
 
-func Login() *Config {
+func Load() *Config {
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatal("Cannot load .env ", err)

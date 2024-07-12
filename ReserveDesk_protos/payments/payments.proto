@@ -10,10 +10,17 @@ service Payments{
     rpc UpdatePayment(Payment) returns (Void);
     rpc DeletePayment(Id) returns (Void);
     rpc GetStatus(Id) returns (Status);
-    rpc ValidatePaymentId(Id) returns (Status);
+    rpc ValidatePaymentId(Id) returns (Exists);
 }
 
 message Payment {
+	string reservation_id = 1;
+	int64 amount = 2; 
+	string payment_method = 3;
+    string Id = 4;
+}
+
+message UpdatePayment {
 	string reservation_id = 1;
 	int64 amount = 2; 
 	string payment_method = 3;
@@ -28,15 +35,20 @@ message PaymentsFilter{
     int64 payments_to = 2;
     int32 limit = 3;
     int32 offset = 4;
+    string Id = 5;
 }
 
-message AllPayments{
+message AllPayment{
     string id = 1;
     string reservation_id = 2;
 	int64 amount = 3; 
 	string payment_method = 4;
     string created_at = 5;
     string updated_at = 6;
+}
+
+message AllPayments{
+    repeated AllPayment AllPayments = 1;
 }
 
 message Void{
