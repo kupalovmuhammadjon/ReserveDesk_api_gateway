@@ -10,7 +10,7 @@ func (h *Handler) MakePayment(c *gin.Context) {
 	req := &payments.Payment{}
 	if err := c.ShouldBindJSON(req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
+		return	
 	}
 	resp, err := h.Payments.MakePayment(c, req)
 	if err != nil {
