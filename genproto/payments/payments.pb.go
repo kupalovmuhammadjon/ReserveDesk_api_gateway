@@ -28,10 +28,7 @@ type Payment struct {
 	ReservationId string `protobuf:"bytes,1,opt,name=reservation_id,json=reservationId,proto3" json:"reservation_id,omitempty"`
 	Amount        int64  `protobuf:"varint,2,opt,name=amount,proto3" json:"amount,omitempty"`
 	PaymentMethod string `protobuf:"bytes,3,opt,name=payment_method,json=paymentMethod,proto3" json:"payment_method,omitempty"`
-<<<<<<< HEAD
-=======
 	Id            string `protobuf:"bytes,4,opt,name=Id,proto3" json:"Id,omitempty"`
->>>>>>> origin/master
 }
 
 func (x *Payment) Reset() {
@@ -87,8 +84,6 @@ func (x *Payment) GetPaymentMethod() string {
 	return ""
 }
 
-<<<<<<< HEAD
-=======
 func (x *Payment) GetId() string {
 	if x != nil {
 		return x.Id
@@ -159,7 +154,6 @@ func (x *UpdatePayment) GetPaymentMethod() string {
 	return ""
 }
 
->>>>>>> origin/master
 type Id struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -171,11 +165,7 @@ type Id struct {
 func (x *Id) Reset() {
 	*x = Id{}
 	if protoimpl.UnsafeEnabled {
-<<<<<<< HEAD
-		mi := &file_payments_proto_msgTypes[1]
-=======
 		mi := &file_payments_proto_msgTypes[2]
->>>>>>> origin/master
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -188,11 +178,7 @@ func (x *Id) String() string {
 func (*Id) ProtoMessage() {}
 
 func (x *Id) ProtoReflect() protoreflect.Message {
-<<<<<<< HEAD
-	mi := &file_payments_proto_msgTypes[1]
-=======
 	mi := &file_payments_proto_msgTypes[2]
->>>>>>> origin/master
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -205,11 +191,7 @@ func (x *Id) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Id.ProtoReflect.Descriptor instead.
 func (*Id) Descriptor() ([]byte, []int) {
-<<<<<<< HEAD
-	return file_payments_proto_rawDescGZIP(), []int{1}
-=======
 	return file_payments_proto_rawDescGZIP(), []int{2}
->>>>>>> origin/master
 }
 
 func (x *Id) GetId() string {
@@ -224,28 +206,17 @@ type PaymentsFilter struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-<<<<<<< HEAD
-	PaymentsFrom int64 `protobuf:"varint,1,opt,name=payments_from,json=paymentsFrom,proto3" json:"payments_from,omitempty"`
-	PaymentsTo   int64 `protobuf:"varint,2,opt,name=payments_to,json=paymentsTo,proto3" json:"payments_to,omitempty"`
-	Limit        int32 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
-	Offset       int32 `protobuf:"varint,4,opt,name=offset,proto3" json:"offset,omitempty"`
-=======
 	PaymentsFrom int64  `protobuf:"varint,1,opt,name=payments_from,json=paymentsFrom,proto3" json:"payments_from,omitempty"`
 	PaymentsTo   int64  `protobuf:"varint,2,opt,name=payments_to,json=paymentsTo,proto3" json:"payments_to,omitempty"`
 	Limit        int32  `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
 	Offset       int32  `protobuf:"varint,4,opt,name=offset,proto3" json:"offset,omitempty"`
 	Id           string `protobuf:"bytes,5,opt,name=Id,proto3" json:"Id,omitempty"`
->>>>>>> origin/master
 }
 
 func (x *PaymentsFilter) Reset() {
 	*x = PaymentsFilter{}
 	if protoimpl.UnsafeEnabled {
-<<<<<<< HEAD
-		mi := &file_payments_proto_msgTypes[2]
-=======
 		mi := &file_payments_proto_msgTypes[3]
->>>>>>> origin/master
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -258,11 +229,7 @@ func (x *PaymentsFilter) String() string {
 func (*PaymentsFilter) ProtoMessage() {}
 
 func (x *PaymentsFilter) ProtoReflect() protoreflect.Message {
-<<<<<<< HEAD
-	mi := &file_payments_proto_msgTypes[2]
-=======
 	mi := &file_payments_proto_msgTypes[3]
->>>>>>> origin/master
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -275,11 +242,7 @@ func (x *PaymentsFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PaymentsFilter.ProtoReflect.Descriptor instead.
 func (*PaymentsFilter) Descriptor() ([]byte, []int) {
-<<<<<<< HEAD
-	return file_payments_proto_rawDescGZIP(), []int{2}
-=======
 	return file_payments_proto_rawDescGZIP(), []int{3}
->>>>>>> origin/master
 }
 
 func (x *PaymentsFilter) GetPaymentsFrom() int64 {
@@ -310,9 +273,6 @@ func (x *PaymentsFilter) GetOffset() int32 {
 	return 0
 }
 
-<<<<<<< HEAD
-type AllPayments struct {
-=======
 func (x *PaymentsFilter) GetId() string {
 	if x != nil {
 		return x.Id
@@ -321,7 +281,6 @@ func (x *PaymentsFilter) GetId() string {
 }
 
 type AllPayment struct {
->>>>>>> origin/master
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -334,12 +293,6 @@ type AllPayment struct {
 	UpdatedAt     string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 }
 
-<<<<<<< HEAD
-func (x *AllPayments) Reset() {
-	*x = AllPayments{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_payments_proto_msgTypes[3]
-=======
 func (x *AllPayment) Reset() {
 	*x = AllPayment{}
 	if protoimpl.UnsafeEnabled {
@@ -426,7 +379,6 @@ func (x *AllPayments) Reset() {
 	*x = AllPayments{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_payments_proto_msgTypes[5]
->>>>>>> origin/master
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -439,11 +391,7 @@ func (x *AllPayments) String() string {
 func (*AllPayments) ProtoMessage() {}
 
 func (x *AllPayments) ProtoReflect() protoreflect.Message {
-<<<<<<< HEAD
-	mi := &file_payments_proto_msgTypes[3]
-=======
 	mi := &file_payments_proto_msgTypes[5]
->>>>>>> origin/master
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -456,51 +404,6 @@ func (x *AllPayments) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AllPayments.ProtoReflect.Descriptor instead.
 func (*AllPayments) Descriptor() ([]byte, []int) {
-<<<<<<< HEAD
-	return file_payments_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *AllPayments) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *AllPayments) GetReservationId() string {
-	if x != nil {
-		return x.ReservationId
-	}
-	return ""
-}
-
-func (x *AllPayments) GetAmount() int64 {
-	if x != nil {
-		return x.Amount
-	}
-	return 0
-}
-
-func (x *AllPayments) GetPaymentMethod() string {
-	if x != nil {
-		return x.PaymentMethod
-	}
-	return ""
-}
-
-func (x *AllPayments) GetCreatedAt() string {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return ""
-}
-
-func (x *AllPayments) GetUpdatedAt() string {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return ""
-=======
 	return file_payments_proto_rawDescGZIP(), []int{5}
 }
 
@@ -509,7 +412,6 @@ func (x *AllPayments) GetAllPayments() []*AllPayment {
 		return x.AllPayments
 	}
 	return nil
->>>>>>> origin/master
 }
 
 type Void struct {
@@ -521,11 +423,7 @@ type Void struct {
 func (x *Void) Reset() {
 	*x = Void{}
 	if protoimpl.UnsafeEnabled {
-<<<<<<< HEAD
-		mi := &file_payments_proto_msgTypes[4]
-=======
 		mi := &file_payments_proto_msgTypes[6]
->>>>>>> origin/master
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -538,11 +436,7 @@ func (x *Void) String() string {
 func (*Void) ProtoMessage() {}
 
 func (x *Void) ProtoReflect() protoreflect.Message {
-<<<<<<< HEAD
-	mi := &file_payments_proto_msgTypes[4]
-=======
 	mi := &file_payments_proto_msgTypes[6]
->>>>>>> origin/master
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -555,11 +449,7 @@ func (x *Void) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Void.ProtoReflect.Descriptor instead.
 func (*Void) Descriptor() ([]byte, []int) {
-<<<<<<< HEAD
-	return file_payments_proto_rawDescGZIP(), []int{4}
-=======
 	return file_payments_proto_rawDescGZIP(), []int{6}
->>>>>>> origin/master
 }
 
 type Status struct {
@@ -573,11 +463,7 @@ type Status struct {
 func (x *Status) Reset() {
 	*x = Status{}
 	if protoimpl.UnsafeEnabled {
-<<<<<<< HEAD
-		mi := &file_payments_proto_msgTypes[5]
-=======
 		mi := &file_payments_proto_msgTypes[7]
->>>>>>> origin/master
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -590,11 +476,7 @@ func (x *Status) String() string {
 func (*Status) ProtoMessage() {}
 
 func (x *Status) ProtoReflect() protoreflect.Message {
-<<<<<<< HEAD
-	mi := &file_payments_proto_msgTypes[5]
-=======
 	mi := &file_payments_proto_msgTypes[7]
->>>>>>> origin/master
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -607,11 +489,7 @@ func (x *Status) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Status.ProtoReflect.Descriptor instead.
 func (*Status) Descriptor() ([]byte, []int) {
-<<<<<<< HEAD
-	return file_payments_proto_rawDescGZIP(), []int{5}
-=======
 	return file_payments_proto_rawDescGZIP(), []int{7}
->>>>>>> origin/master
 }
 
 func (x *Status) GetPaymentStatus() string {
@@ -632,11 +510,7 @@ type Exists struct {
 func (x *Exists) Reset() {
 	*x = Exists{}
 	if protoimpl.UnsafeEnabled {
-<<<<<<< HEAD
-		mi := &file_payments_proto_msgTypes[6]
-=======
 		mi := &file_payments_proto_msgTypes[8]
->>>>>>> origin/master
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -649,11 +523,7 @@ func (x *Exists) String() string {
 func (*Exists) ProtoMessage() {}
 
 func (x *Exists) ProtoReflect() protoreflect.Message {
-<<<<<<< HEAD
-	mi := &file_payments_proto_msgTypes[6]
-=======
 	mi := &file_payments_proto_msgTypes[8]
->>>>>>> origin/master
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -666,11 +536,7 @@ func (x *Exists) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Exists.ProtoReflect.Descriptor instead.
 func (*Exists) Descriptor() ([]byte, []int) {
-<<<<<<< HEAD
-	return file_payments_proto_rawDescGZIP(), []int{6}
-=======
 	return file_payments_proto_rawDescGZIP(), []int{8}
->>>>>>> origin/master
 }
 
 func (x *Exists) GetExists() bool {
@@ -822,8 +688,6 @@ func file_payments_proto_init() {
 			}
 		}
 		file_payments_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-<<<<<<< HEAD
-=======
 			switch v := v.(*UpdatePayment); i {
 			case 0:
 				return &v.state
@@ -836,7 +700,6 @@ func file_payments_proto_init() {
 			}
 		}
 		file_payments_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
->>>>>>> origin/master
 			switch v := v.(*Id); i {
 			case 0:
 				return &v.state
@@ -848,11 +711,7 @@ func file_payments_proto_init() {
 				return nil
 			}
 		}
-<<<<<<< HEAD
-		file_payments_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-=======
 		file_payments_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
->>>>>>> origin/master
 			switch v := v.(*PaymentsFilter); i {
 			case 0:
 				return &v.state
@@ -864,9 +723,6 @@ func file_payments_proto_init() {
 				return nil
 			}
 		}
-<<<<<<< HEAD
-		file_payments_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-=======
 		file_payments_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AllPayment); i {
 			case 0:
@@ -880,7 +736,6 @@ func file_payments_proto_init() {
 			}
 		}
 		file_payments_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
->>>>>>> origin/master
 			switch v := v.(*AllPayments); i {
 			case 0:
 				return &v.state
@@ -892,11 +747,7 @@ func file_payments_proto_init() {
 				return nil
 			}
 		}
-<<<<<<< HEAD
-		file_payments_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-=======
 		file_payments_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
->>>>>>> origin/master
 			switch v := v.(*Void); i {
 			case 0:
 				return &v.state
@@ -908,11 +759,7 @@ func file_payments_proto_init() {
 				return nil
 			}
 		}
-<<<<<<< HEAD
-		file_payments_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-=======
 		file_payments_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
->>>>>>> origin/master
 			switch v := v.(*Status); i {
 			case 0:
 				return &v.state
@@ -924,11 +771,7 @@ func file_payments_proto_init() {
 				return nil
 			}
 		}
-<<<<<<< HEAD
-		file_payments_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-=======
 		file_payments_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
->>>>>>> origin/master
 			switch v := v.(*Exists); i {
 			case 0:
 				return &v.state

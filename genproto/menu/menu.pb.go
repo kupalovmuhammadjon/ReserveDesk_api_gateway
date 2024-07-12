@@ -426,10 +426,7 @@ type MenuFilter struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-<<<<<<< HEAD
-=======
 	Id           string `protobuf:"bytes,1,opt,name=Id,proto3" json:"Id,omitempty"`
->>>>>>> origin/master
 	ItemType     string `protobuf:"bytes,2,opt,name=item_type,json=itemType,proto3" json:"item_type,omitempty"`
 	Name         string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Price        int32  `protobuf:"varint,4,opt,name=price,proto3" json:"price,omitempty"`
@@ -469,8 +466,6 @@ func (x *MenuFilter) ProtoReflect() protoreflect.Message {
 // Deprecated: Use MenuFilter.ProtoReflect.Descriptor instead.
 func (*MenuFilter) Descriptor() ([]byte, []int) {
 	return file_menu_proto_rawDescGZIP(), []int{6}
-<<<<<<< HEAD
-=======
 }
 
 func (x *MenuFilter) GetId() string {
@@ -478,7 +473,6 @@ func (x *MenuFilter) GetId() string {
 		return x.Id
 	}
 	return ""
->>>>>>> origin/master
 }
 
 func (x *MenuFilter) GetItemType() string {

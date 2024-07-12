@@ -83,13 +83,8 @@ func (c *paymentsClient) GetStatus(ctx context.Context, in *Id, opts ...grpc.Cal
 	return out, nil
 }
 
-<<<<<<< HEAD
-func (c *paymentsClient) ValidatePaymentId(ctx context.Context, in *Id, opts ...grpc.CallOption) (*Status, error) {
-	out := new(Status)
-=======
 func (c *paymentsClient) ValidatePaymentId(ctx context.Context, in *Id, opts ...grpc.CallOption) (*Exists, error) {
 	out := new(Exists)
->>>>>>> origin/master
 	err := c.cc.Invoke(ctx, "/payments.Payments/ValidatePaymentId", in, out, opts...)
 	if err != nil {
 		return nil, err
