@@ -35,5 +35,5 @@ permission:
 	@chmod +x scripts/gen-proto.sh
 
 swag-gen:
-	swag init -g ./api/api.go -o api/docs
+	~go/bin/swag init -g ./api/api.go -o api/docs
 

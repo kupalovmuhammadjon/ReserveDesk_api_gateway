@@ -8,6 +8,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @title ReserveDesk API
+// @version 1.0
+// @description ReserveDesk is program to book seats in restaurants order food before arrival.
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host localhost:8080
+// @BasePath /auth
+
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
+
 func NewRouter(cfg *config.Config) *gin.Engine {
 	router := gin.Default()
 
@@ -37,6 +51,26 @@ func NewRouter(cfg *config.Config) *gin.Engine {
 	auth.PUT("/:id/profile", h.UpdateAuth)
 	auth.DELETE("/:id/profile", h.DeleteAuth)
 	auth.GET("/:id/profile", h.ShowProfile)
+
+	menu := api.Group("/menu")
+	menu.POST("/menu", h.CreateMenu)
+	menu.PUT("/menu/:id", h.UpdateMenu)
+	menu.DELETE("/menu/:id", h.DeleteMenu)
+	menu.GET("/get/menu/:id", h.GetByIdMenu)
+	menu.GET("/getAll/menu/:id", h.GetAllMenu)
+
+	payment := api.Group("/payment")
+	payment.POST("/make/payment", h.MakePayment)
+	payment.GET("/get/payment/:id", h.GetPayment)
+	payment.PUT("/payment/:id", h.UpdatePayment)
+	payment.DELETE("/payment/:id", h.DeletePayment)
+	payment.GET("/get/status/:id", h.GetStatus)
+
+	restaurant := api.Group("/restaurant")
+	restaurant.POST("/restaurant/:id", h.CreateRestaurant)
+	restaurant.GET("/restaurant/:id", h.GetRestaurantById)
+	restaurant.PUT("/restaurant/:id", h.UpdateRestaurantById)
+	restaurant.DELETE("/restaurant/:id", h.DeleteRestaurantById)
 
 	return router
 }
