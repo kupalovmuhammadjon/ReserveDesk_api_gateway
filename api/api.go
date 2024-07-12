@@ -2,35 +2,41 @@ package api
 
 import (
 	"api_gateway_service/api/handler"
+	"api_gateway_service/api/middleware"
 	"api_gateway_service/config"
+
 	"github.com/gin-gonic/gin"
 )
 
 func NewRouter(cfg *config.Config) *gin.Engine {
-	r := gin.Default()
-	api := r.Group("/api")
-	//api.Use(middleware.JWTMiddleware())
-	h := handler.Handler{}
+	router := gin.Default()
 
-	menu := api.Group("/menu")
-	menu.POST("/menu", h.CreateMenu)
-	menu.PUT("/menu/:id", h.UpdateMenu)
-	menu.DELETE("/menu/:id", h.DeleteMenu)
-	menu.GET("/get/menu/:id", h.GetByIdMenu)
-	menu.GET("/getAll/menu/:id", h.GetAllMenu)
+	api := router.Group("/reservation")
+	api.Use(middleware.JWTMiddleware())
 
-	payment := api.Group("/payment")
-	payment.POST("/make/payment", h.MakePayment)
-	payment.GET("/get/payment/:id", h.GetPayment)
-	payment.PUT("/payment/:id", h.UpdatePayment)
-	payment.DELETE("/payment/:id", h.DeletePayment)
-	payment.GET("/get/status/:id", h.GetStatus)
+	h := handler.NewHandler(cfg)
 
-	restaurant := api.Group("/restaurant")
-	restaurant.POST("/restaurant/:id", h.CreateRestaurant)
-	restaurant.GET("/restaurant/:id", h.GetRestaurantById)
-	restaurant.PUT("/restaurant/:id", h.UpdateRestaurantById)
-	restaurant.DELETE("/restaurant/:id", h.DeleteRestaurantById)
+	// reservation api
+	reservation := api.Group("/reservations")
+	reservation.POST("/", h.CreateReservation)
+	reservation.DELETE("/:id", h.DeleteReservation)
+	reservation.PUT("/:id", h.UpdateReservation)
+	reservation.GET("/", h.GetAllReservation)
+	reservation.GET("/:id", h.GetByIdReservation)
 
-	return r
+	// order api
+	order := api.Group("/orders")
+	order.POST("/", h.CreateOrder)
+	order.PUT("/:id", h.UpdateOrder)
+	order.DELETE("/:id", h.DeleteAuth)
+	order.GET("/", h.GetAllOrder)
+	order.GET("/:id", h.GetByIdOrder)
+
+	// auth api
+	auth := api.Group("/auths")
+	auth.PUT("/:id/profile", h.UpdateAuth)
+	auth.DELETE("/:id/profile", h.DeleteAuth)
+	auth.GET("/:id/profile", h.ShowProfile)
+
+	return router
 }

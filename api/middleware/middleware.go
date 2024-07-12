@@ -1,8 +1,9 @@
 package middleware
 
 import (
-	"net/http"
 
+	"api_gateway_service/api/token"
+	"net/http"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,7 +17,6 @@ func JWTMiddleware() gin.HandlerFunc {
 			})
 			return
 		}
-
 		valid, err := token.ValidateToken(auth)
 		if err != nil || !valid {
 			ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
@@ -32,7 +32,10 @@ func JWTMiddleware() gin.HandlerFunc {
 			})
 			return
 		}
-		ctx.Set("claims", claims)
+
+
+		ctx.Set("calims", claims)
 		ctx.Next()
 	}
 }
+
