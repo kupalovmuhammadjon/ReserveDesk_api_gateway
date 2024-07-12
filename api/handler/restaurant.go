@@ -13,7 +13,7 @@ import (
 // @Tags restaurant
 // @Accept json
 // @Produce json
-// @Param Restaurant body menu.CreateMenu true "Restaurant"
+// @Param Restaurant body restaurant.RestaurantCreate true "Restaurant"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
@@ -38,7 +38,7 @@ func (h *Handler) CreateRestaurant(c *gin.Context) {
 // @Tags restaurant
 // @Accept json
 // @Produce json
-// @Param Restaurant body menu.GetRestaurantById true "Restaurant"
+// @Param   id     path    string     true        "Restaurant ID"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
@@ -65,7 +65,8 @@ func (h *Handler) GetRestaurantById(c *gin.Context) {
 // @Tags restaurant
 // @Accept json
 // @Produce json
-// @Param Payments body payments.UpdateRestaurantById true "Payments"
+// @Param   id     path    string     true        "Restaurant ID"
+// @Param Payments body restaurant.RestaurantUpdate true "Payments"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
@@ -86,12 +87,12 @@ func (h *Handler) UpdateRestaurantById(c *gin.Context) {
 }
 
 // DeleteRestaurantById
-// @Summary Delete Payments
+// @Summary Delete Restaurant
 // @Description This API for updating Menu
 // @Tags restaurant
 // @Accept json
 // @Produce json
-// @Param Payments body payments.DeleteRestaurantById true "Payments"
+// @Param   id     path    string     true        "Restaurant ID"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object

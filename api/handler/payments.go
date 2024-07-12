@@ -13,7 +13,7 @@ import (
 // @Tags payments
 // @Accept json
 // @Produce json
-// @Param Payments body payments.MakePayment true "Payments"
+// @Param Payments body payments.Payment true "Payments"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
@@ -38,7 +38,7 @@ func (h *Handler) MakePayment(c *gin.Context) {
 // @Tags payments
 // @Accept json
 // @Produce json
-// @Param Payments body payments.GetPayment true "Payments"
+// @Param Payments body payments.PaymentsFilter true "Payments"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
@@ -65,11 +65,12 @@ func (h *Handler) GetPayment(c *gin.Context) {
 // @Tags payments
 // @Accept json
 // @Produce json
-// @Param Payments body payments.UpdatePayment true "Payments"
+// @Param Payments body payments.Payment true "Payments"
+// @Param   id     path    string     true        "Payment ID"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
-// @Router /payment/:id [put]
+// @Router /payment/{id} [put]
 func (h *Handler) UpdatePayment(c *gin.Context) {
 	id := c.Param("id")
 	req := &payments.Payment{Id: id}
@@ -91,7 +92,7 @@ func (h *Handler) UpdatePayment(c *gin.Context) {
 // @Tags payments
 // @Accept json
 // @Produce json
-// @Param Payments body payments.DeletePayment true "Payments"
+// @Param   id     path    string     true        "Payment ID"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
@@ -117,7 +118,7 @@ func (h *Handler) DeletePayment(c *gin.Context) {
 // @Tags payments
 // @Accept json
 // @Produce json
-// @Param Payments body payments.GetStatus true "Payments"
+// @Param   id     path    string     true        "Payment ID"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object

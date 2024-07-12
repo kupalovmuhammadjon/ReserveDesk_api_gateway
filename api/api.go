@@ -6,6 +6,9 @@ import (
 	"api_gateway_service/config"
 
 	"github.com/gin-gonic/gin"
+	_ "api_gateway_service/api/docs"
+    swaggerFiles "github.com/swaggo/files"
+    ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 // @title ReserveDesk API
@@ -15,17 +18,21 @@ import (
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
-// @host localhost:8080
-// @BasePath /auth
+// @host localhost:8888
+// @BasePath /reservedesk.uz
 
-// @securityDefinitions.apikey BearerAuth
+// @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Authorization
+// @schemes http
+
 
 func NewRouter(cfg *config.Config) *gin.Engine {
 	router := gin.Default()
 
-	api := router.Group("/reservation")
+    router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	api := router.Group("/reservedesk.uz")
 	api.Use(middleware.JWTMiddleware())
 
 	h := handler.NewHandler(cfg)

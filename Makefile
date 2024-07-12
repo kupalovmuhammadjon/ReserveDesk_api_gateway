@@ -2,10 +2,7 @@ CURRENT_DIR := $(shell pwd)
 DATABASE_URL="postgres://postgres:root@localhost:5432/reservedesk_auth_service?sslmode=disable"
 
 runserver:
-	@go run cmd/server/server.go
-
-runservice:
-	@go run cmd/service/service.go
+	@go run cmd/main.go
 
 gen-proto:
 	@./scripts/gen-proto.sh $(CURRENT_DIR)
@@ -35,5 +32,5 @@ permission:
 	@chmod +x scripts/gen-proto.sh
 
 swag-gen:
-	~go/bin/swag init -g ./api/api.go -o api/docs
+	$(HOME)/go/bin/swag init -g ./api/api.go -o api/docs
 

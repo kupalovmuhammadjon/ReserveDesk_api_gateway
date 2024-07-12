@@ -13,7 +13,7 @@ import (
 // @Tags menu
 // @Accept json
 // @Produce json
-// @Param Menu body menu.CreateMenu true "Menu"
+// @Param Menu body menu.MenuRequest true "Menu"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
@@ -38,7 +38,7 @@ func (h *Handler) CreateMenu(c *gin.Context) {
 // @Tags menu
 // @Accept json
 // @Produce json
-// @Param Menu body menu.UpdateMenu true "Menu"
+// @Param Menu body menu.MenuUpateRequest true "Menu"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
@@ -67,7 +67,7 @@ func (h *Handler) UpdateMenu(c *gin.Context) {
 // @Tags menu
 // @Accept json
 // @Produce json
-// @Param Menu body menu.DeleteMenu true "Menu"
+// @Param   id     path    string     true        "Menu ID"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
@@ -97,11 +97,13 @@ func (h *Handler) DeleteMenu(c *gin.Context) {
 // @Tags menu
 // @Accept json
 // @Produce json
-// @Param Menu body menu.GetByIdMenu true "Menu"
+// @Security ApiKeyAuth
+// @Param   id     path    string     true        "Menu ID"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object
-// @Router /get/menu/{id} [get]
+// @Router /menu/get/menu/{id} [get]
+
 func (h *Handler) GetByIdMenu(c *gin.Context) {
 	req := &menu.Id{}
 	if err := c.ShouldBind(req); err != nil {
@@ -126,7 +128,8 @@ func (h *Handler) GetByIdMenu(c *gin.Context) {
 // @Tags menu
 // @Accept json
 // @Produce json
-// @Param Menu body menu.GetAllMenu true "Menu"
+// @Param Menu query menu.MenuFilter true "Menu"
+// @Param   id     path    string     true        "Restaurant ID"
 // @Success 201 {object} string "ok"
 // @Failure 400 {object} object
 // @Failure 500 {object} object

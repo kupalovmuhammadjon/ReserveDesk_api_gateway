@@ -1,0 +1,513 @@
+basePath: /reservedesk.uz
+definitions:
+  menu.MenuRequest:
+    properties:
+      description:
+        type: string
+      item_type:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+      restaurant_id:
+        type: string
+    type: object
+  menu.MenuUpateRequest:
+    properties:
+      Id:
+        type: string
+      description:
+        type: string
+      item_type:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+      restaurant_id:
+        type: string
+    type: object
+  payments.Payment:
+    properties:
+      Id:
+        type: string
+      amount:
+        type: integer
+      payment_method:
+        type: string
+      reservation_id:
+        type: string
+    type: object
+  payments.PaymentsFilter:
+    properties:
+      Id:
+        type: string
+      limit:
+        type: integer
+      offset:
+        type: integer
+      payments_from:
+        type: integer
+      payments_to:
+        type: integer
+    type: object
+  restaurant.RestaurantCreate:
+    properties:
+      address:
+        type: string
+      description:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+      total_avb_seats:
+        type: integer
+    type: object
+  restaurant.RestaurantUpdate:
+    properties:
+      address:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+      total_avb_seats:
+        type: integer
+    type: object
+host: localhost:8888
+info:
+  contact: {}
+  description: ReserveDesk is program to book seats in restaurants order food before
+    arrival.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: ReserveDesk API
+  version: "1.0"
+paths:
+  /get/payment/:id:
+    get:
+      consumes:
+      - application/json
+      description: This API for get wth id Menu
+      parameters:
+      - description: Payments
+        in: body
+        name: Payments
+        required: true
+        schema:
+          $ref: '#/definitions/payments.PaymentsFilter'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get Payments
+      tags:
+      - payments
+  /get/status/:id:
+    get:
+      consumes:
+      - application/json
+      description: This API for get wth id Menu
+      parameters:
+      - description: Payment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get Payments
+      tags:
+      - payments
+  /getAll/menu/{id}:
+    get:
+      consumes:
+      - application/json
+      description: This API for get wth id Menu
+      parameters:
+      - in: query
+        name: Id
+        type: string
+      - in: query
+        name: description
+        type: string
+      - in: query
+        name: item_type
+        type: string
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: offset
+        type: integer
+      - in: query
+        name: price
+        type: integer
+      - in: query
+        name: restaurant_id
+        type: string
+      - description: Restaurant ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: GetAll Menu
+      tags:
+      - menu
+  /make/payment:
+    post:
+      consumes:
+      - application/json
+      description: This API for Creating Menu
+      parameters:
+      - description: Payments
+        in: body
+        name: Payments
+        required: true
+        schema:
+          $ref: '#/definitions/payments.Payment'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create Payments
+      tags:
+      - payments
+  /menu:
+    post:
+      consumes:
+      - application/json
+      description: This API for creating Menu
+      parameters:
+      - description: Menu
+        in: body
+        name: Menu
+        required: true
+        schema:
+          $ref: '#/definitions/menu.MenuRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create Menu
+      tags:
+      - menu
+  /menu/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This API for deleting Menu
+      parameters:
+      - description: Menu ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete Menu
+      tags:
+      - menu
+    put:
+      consumes:
+      - application/json
+      description: This API for updating Menu
+      parameters:
+      - description: Menu
+        in: body
+        name: Menu
+        required: true
+        schema:
+          $ref: '#/definitions/menu.MenuUpateRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update Menu
+      tags:
+      - menu
+  /payment/:id:
+    delete:
+      consumes:
+      - application/json
+      description: This API for get wth id Menu
+      parameters:
+      - description: Payment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete Payments
+      tags:
+      - payments
+  /payment/{id}:
+    put:
+      consumes:
+      - application/json
+      description: This API for updating Menu
+      parameters:
+      - description: Payments
+        in: body
+        name: Payments
+        required: true
+        schema:
+          $ref: '#/definitions/payments.Payment'
+      - description: Payment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update Payments
+      tags:
+      - payments
+  /restaurant/:id:
+    delete:
+      consumes:
+      - application/json
+      description: This API for updating Menu
+      parameters:
+      - description: Restaurant ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete Restaurant
+      tags:
+      - restaurant
+    get:
+      consumes:
+      - application/json
+      description: This API for get wth id Menu
+      parameters:
+      - description: Restaurant ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get Restaurant
+      tags:
+      - restaurant
+    post:
+      consumes:
+      - application/json
+      description: This API for creating Menu
+      parameters:
+      - description: Restaurant
+        in: body
+        name: Restaurant
+        required: true
+        schema:
+          $ref: '#/definitions/restaurant.RestaurantCreate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create Restaurant
+      tags:
+      - restaurant
+    put:
+      consumes:
+      - application/json
+      description: This API for updating Menu
+      parameters:
+      - description: Restaurant ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Payments
+        in: body
+        name: Payments
+        required: true
+        schema:
+          $ref: '#/definitions/restaurant.RestaurantUpdate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update Payments
+      tags:
+      - restaurant
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
