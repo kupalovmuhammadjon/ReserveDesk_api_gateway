@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"api_gateway/genproto/payments"
+	"api_gateway_service/genproto/payments"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

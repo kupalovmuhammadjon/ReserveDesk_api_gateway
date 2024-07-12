@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"api_gateway/genproto/restaurant"
+	"api_gateway_service/genproto/restaurant"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

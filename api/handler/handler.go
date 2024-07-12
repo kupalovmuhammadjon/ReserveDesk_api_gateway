@@ -1,9 +1,9 @@
 package handler
 
 import (
-	menu "api_gateway/genproto/menu"
-	payments "api_gateway/genproto/payments"
-	restaurant "api_gateway/genproto/restaurant"
+	menu "api_gateway_service/genproto/menu"
+	payments "api_gateway_service/genproto/payments"
+	restaurant "api_gateway_service/genproto/restaurant"
 )
 
 type Handler struct {

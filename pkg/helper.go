@@ -1,10 +1,10 @@
 package pkg
 
 import (
-	"api_service/config"
-	pbuAuthservice "api_service/genproto/auth"
-	pbuOrderservice "api_service/genproto/order"
-	pbuReservation "api_service/genproto/reservations"
+	"api_gateway_service/config"
+	pbuAuthservice "api_gateway_service/genproto/auth"
+	pbuOrderservice "api_gateway_service/genproto/order"
+	pbuReservation "api_gateway_service/genproto/reservations"
 	"log"
 
 	"google.golang.org/grpc"
