@@ -32,8 +32,6 @@ func JWTMiddleware() gin.HandlerFunc {
 			})
 			return
 		}
-
-
 		ctx.Set("calims", claims)
 		ctx.Next()
 	}

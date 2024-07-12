@@ -27,6 +27,7 @@ import (
 // @schemes http
 
 
+
 func NewRouter(cfg *config.Config) *gin.Engine {
 	router := gin.Default()
 
@@ -36,6 +37,8 @@ func NewRouter(cfg *config.Config) *gin.Engine {
 	api.Use(middleware.JWTMiddleware())
 
 	h := handler.NewHandler(cfg)
+
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// reservation api
 	reservation := api.Group("/reservations")
@@ -55,9 +58,9 @@ func NewRouter(cfg *config.Config) *gin.Engine {
 
 	// auth api
 	auth := api.Group("/auths")
-	auth.PUT("/:id/profile", h.UpdateAuth)
-	auth.DELETE("/:id/profile", h.DeleteAuth)
-	auth.GET("/:id/profile", h.ShowProfile)
+	auth.PUT("/profile/:id", h.UpdateAuth)
+	auth.DELETE("/profile/:id", h.DeleteAuth)
+	auth.GET("/profile/:id", h.ShowProfile)
 
 	menu := api.Group("/menu")
 	menu.POST("/menu", h.CreateMenu)

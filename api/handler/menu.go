@@ -5,6 +5,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 // CreateMenu
@@ -20,17 +22,22 @@ import (
 // @Router /menu [post]
 func (h *Handler) CreateMenu(c *gin.Context) {
 	req := &menu.MenuRequest{}
-	if err := c.ShouldBind(req); err != nil {
+	if err := c.BindJSON(req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		log.Printf("err: %+v", err)
+
+		h.Logger.Error("ma'lumot kelmadi", "error: ", err.Error())
+		return
 	}
 	resp, err := h.Menu.CreateMenu(c, req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		log.Printf("err: %+v", err)
+
+		h.Logger.Error("ma'lumot kelmadi", "error: ", err.Error())
+		return
 	}
 	c.JSON(http.StatusCreated, resp)
 }
+
 
 // UpdateMenu
 // @Summary Update Menu
@@ -47,16 +54,20 @@ func (h *Handler) UpdateMenu(c *gin.Context) {
 	req := &menu.MenuUpateRequest{}
 	if err := c.ShouldBind(req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		log.Printf("err: %+v", err)
+		h.Logger.Error("ma'lumot kelmadi", "error: ", err.Error())
+		return
 	}
 	req.Id = c.Param("id")
 	if req.Id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "id is empty"})
+		h.Logger.Info("id bo`shqayti ")
+		return
 	}
 	resp, err := h.Menu.UpdateMenu(c, req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		log.Printf("err: %+v", err)
+		h.Logger.Error("ma'lumot kelmadi", "err: ", err.Error())
+		return
 	}
 	c.JSON(http.StatusOK, resp)
 }
@@ -74,18 +85,22 @@ func (h *Handler) UpdateMenu(c *gin.Context) {
 // @Router /menu/{id} [delete]
 func (h *Handler) DeleteMenu(c *gin.Context) {
 	req := &menu.Id{}
-	if err := c.ShouldBind(req); err != nil {
+	if err := c.BindJSON(req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		log.Printf("err: %+v", err)
+		h.Logger.Error("ma'lumotni olishda xato", "err: ", err.Error())
+		return
 	}
 	req.Id = c.Param("id")
 	if req.Id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "id is empty"})
+		h.Logger.Info("id bo`sh")
+		return
 	}
 	resp, err := h.Menu.DeleteMenu(c, req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		log.Printf("err: %+v", err)
+		h.Logger.Error("ma'lumot kelmadi", "err: ", err.Error())
+		return
 	}
 	c.JSON(http.StatusOK, resp)
 
@@ -106,16 +121,19 @@ func (h *Handler) DeleteMenu(c *gin.Context) {
 
 func (h *Handler) GetByIdMenu(c *gin.Context) {
 	req := &menu.Id{}
-	if err := c.ShouldBind(req); err != nil {
+	if err := c.BindJSON(req); err != nil {
+		h.Logger.Error("ma'lumot kelmadi", "err: ", err.Error())
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		log.Printf("err: %+v", err)
 	}
 	req.Id = c.Param("id")
 	if req.Id == "" {
+		h.Logger.Info("id bo`sh")
 		c.JSON(http.StatusBadRequest, gin.H{"error": "id is empty"})
 	}
 	resp, err := h.Menu.GetByIdMenu(c, req)
 	if err != nil {
+		h.Logger.Error("ma'lumot kelmadi", "err: ", err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		log.Printf("err: %+v", err)
 	}
@@ -136,16 +154,19 @@ func (h *Handler) GetByIdMenu(c *gin.Context) {
 // @Router /getAll/menu/{id} [get]
 func (h *Handler) GetAllMenu(c *gin.Context) {
 	req := &menu.MenuFilter{}
-	if err := c.ShouldBind(req); err != nil {
+	if err := c.BindJSON(req); err != nil {
+		h.Logger.Error("ma'lumot kelmadi", "err: ", err.Error())
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		log.Printf("err: %+v", err)
 	}
 	req.Id = c.Param("id")
 	if req.Id == "" {
+		h.Logger.Error("id bo`sh")
 		c.JSON(http.StatusBadRequest, gin.H{"error": "id is empty"})
 	}
 	resp, err := h.Menu.GetAllMenu(c, req)
 	if err != nil {
+		h.Logger.Error("ma'lumot kelmadi", "err: ", err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		log.Printf("err: %+v", err)
 	}

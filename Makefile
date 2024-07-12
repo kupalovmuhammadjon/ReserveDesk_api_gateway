@@ -29,6 +29,7 @@ mig-force:
 	migrate -database "$(DATABASE_URL)" -path migrations force $$version
 
 permission:
+
 	@chmod +x scripts/gen-proto.sh
 
 swag-gen:
