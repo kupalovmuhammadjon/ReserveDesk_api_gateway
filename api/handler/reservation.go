@@ -19,7 +19,7 @@ import (
 // @Tags reservation
 // @Accept  json
 // @Produce  json
-// @Param reservation body reservation.Reservation true "Order data"
+// @Param reservation body reservations.Reservation true "Order data"
 // @Success 202 {string} string "SUCCESS"
 // @Failure 400 {object} models.Error "StatusBadRequest"
 // @Failure 500 {object} models.Error "StatusInternalServerError"
@@ -61,7 +61,7 @@ func (h *Handler) CreateReservation(c *gin.Context) {
 // @Accept  json
 // @Produce  json
 // @Param  id path string true "User ID"
-// @Param reservation body reservation.Reservation true "Order data"
+// @Param reservation body reservations.Reservation true "Order data"
 // @Success 202 {string} string "SUCCESS"
 // @Failure 400 {object} models.Error "StatusBadRequest"
 // @Failure 500 {object} models.Error "StatusInternalServerError"

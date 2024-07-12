@@ -1,5 +1,18 @@
 basePath: /reservedesk.uz
 definitions:
+  auth.User:
+    properties:
+      email:
+        type: string
+      full_name:
+        type: string
+      id:
+        type: string
+      is_admin:
+        type: boolean
+      password:
+        type: string
+    type: object
   menu.MenuRequest:
     properties:
       description:
@@ -28,6 +41,44 @@ definitions:
       restaurant_id:
         type: string
     type: object
+  models.Error:
+    properties:
+      error:
+        type: string
+    type: object
+  order.Order:
+    properties:
+      menu_item_id:
+        type: string
+      quantity:
+        type: integer
+      reservation_id:
+        type: string
+    type: object
+  order.OrderFilter:
+    properties:
+      limit:
+        type: integer
+      menu_item_id:
+        type: string
+      offset:
+        type: integer
+      quantity:
+        type: integer
+      reservation_id:
+        type: string
+    type: object
+  order.Updateorder:
+    properties:
+      Id:
+        type: string
+      menu_item_id:
+        type: string
+      quantity:
+        type: integer
+      reservation_id:
+        type: string
+    type: object
   payments.Payment:
     properties:
       Id:
@@ -51,6 +102,17 @@ definitions:
         type: integer
       payments_to:
         type: integer
+    type: object
+  reservations.Reservation:
+    properties:
+      arriving_time:
+        type: string
+      number_of_seats:
+        type: integer
+      restaurant_id:
+        type: string
+      user_id:
+        type: string
     type: object
   restaurant.RestaurantCreate:
     properties:
@@ -91,6 +153,93 @@ info:
   title: ReserveDesk API
   version: "1.0"
 paths:
+  /auths/profile/:id:
+    delete:
+      consumes:
+      - application/json
+      description: Update the user's authentication profile using their ID.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: SUCCESS
+          schema:
+            type: string
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Delete user profile
+      tags:
+      - users
+    get:
+      consumes:
+      - application/json
+      description: Update the user's authentication profile using their ID.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: ShowProfiel user profile
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      description: Update the user's authentication profile using their ID.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/auth.User'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: SUCCESS
+          schema:
+            type: string
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Update user profile
+      tags:
+      - users
   /get/payment/:id:
     get:
       consumes:
@@ -321,6 +470,128 @@ paths:
       summary: Update Menu
       tags:
       - menu
+  /orders:
+    post:
+      consumes:
+      - application/json
+      description: Create the order's authentication order body.
+      parameters:
+      - description: Order data
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/order.Order'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: SUCCESS
+          schema:
+            type: string
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Create order
+      tags:
+      - order
+  /orders/:id:
+    delete:
+      consumes:
+      - application/json
+      description: Delete the order's authentication order body.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: SUCCESS
+          schema:
+            type: string
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Delete order
+      tags:
+      - order
+    get:
+      consumes:
+      - application/json
+      description: Get by all the order's authentication order body.
+      parameters:
+      - description: Order data
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/order.OrderFilter'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: SUCCESS
+          schema:
+            type: string
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Get By All order
+      tags:
+      - order
+    put:
+      consumes:
+      - application/json
+      description: Update the order's authentication order body.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Order data
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/order.Updateorder'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: SUCCESS
+          schema:
+            type: string
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Update order
+      tags:
+      - order
   /payment/:id:
     delete:
       consumes:
@@ -385,6 +656,127 @@ paths:
       summary: Update Payments
       tags:
       - payments
+  /reservations:
+    post:
+      consumes:
+      - application/json
+      description: Create the reservation's authentication reservation body.
+      parameters:
+      - description: Order data
+        in: body
+        name: reservation
+        required: true
+        schema:
+          $ref: '#/definitions/reservations.Reservation'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: SUCCESS
+          schema:
+            type: string
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Create Reservation
+      tags:
+      - reservation
+  /reservations/:id:
+    delete:
+      consumes:
+      - application/json
+      description: Create the reservation's authentication reservation body.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: SUCCESS
+          schema:
+            type: string
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Delete Reservation
+      tags:
+      - reservation
+    get:
+      consumes:
+      - application/json
+      description: Get all reservations authentication reservation body.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: SUCCESS
+          schema:
+            type: string
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Get all Reservations
+      tags:
+      - reservation
+    put:
+      consumes:
+      - application/json
+      description: Create the reservation's authentication reservation body.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Order data
+        in: body
+        name: reservation
+        required: true
+        schema:
+          $ref: '#/definitions/reservations.Reservation'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: SUCCESS
+          schema:
+            type: string
+        "400":
+          description: StatusBadRequest
+          schema:
+            $ref: '#/definitions/models.Error'
+        "500":
+          description: StatusInternalServerError
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Update Reservation
+      tags:
+      - reservation
   /restaurant/:id:
     delete:
       consumes:

@@ -27,7 +27,7 @@ type Handler struct {
 func NewHandler(cfg *config.Config) *Handler {
 	l, err := logger.New()
 	if err != nil {
-		log.Fatal("error: ")
+		log.Fatal("error: ", err)
 	}
 	return &Handler{
 		ClientAuthentication: pkg.NewAuthenticationClient(cfg),

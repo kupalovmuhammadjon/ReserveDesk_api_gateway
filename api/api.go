@@ -38,7 +38,6 @@ func NewRouter(cfg *config.Config) *gin.Engine {
 
 	h := handler.NewHandler(cfg)
 
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// reservation api
 	reservation := api.Group("/reservations")
