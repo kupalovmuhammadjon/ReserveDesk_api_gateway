@@ -43,3 +43,6 @@ mig-force:
 # `gen-proto.sh` skriptiga ruxsat beradi
 permission:
 	chmod +x scripts/gen-proto.sh
+
+swag-gen:
+  ~/go/bin/swag init -g ./api/api.go -o api/docs

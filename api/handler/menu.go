@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+
 func (h *Handler) CreateMenu(c *gin.Context) {
 	req := &menu.MenuRequest{}
 	if err := c.ShouldBind(req); err != nil {
@@ -19,6 +20,8 @@ func (h *Handler) CreateMenu(c *gin.Context) {
 	}
 	c.JSON(http.StatusCreated, resp)
 }
+
+
 func (h *Handler) UpdateMenu(c *gin.Context) {
 	req := &menu.MenuUpateRequest{}
 	if err := c.ShouldBind(req); err != nil {
