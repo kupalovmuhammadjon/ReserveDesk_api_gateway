@@ -1,4 +1,5 @@
 .env
+.vscode
 Makefile
 .idea
 Makefile

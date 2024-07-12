@@ -12,10 +12,16 @@ type Handler struct {
 	Payments   payments.PaymentsClient
 }
 
-func NewHendler(R restaurant.RestaurantClient, M menu.MenuServiceClient, P payments.PaymentsClient) *Handler {
+type Handler struct {
+	ClientAuthentication pbuAuthservice.AuthClient
+	ClientOrder          pbuOrderservice.OrderServiceClient
+	ClientReservation    pbuReservation.ReservationServiceClient
+}
+
+func NewHandler(cfg *config.Config) *Handler {
 	return &Handler{
-		Restaurant: R,
-		Menu:       M,
-		Payments:   P,
+		ClientAuthentication: pkg.NewAuthenticationClient(cfg),
+		ClientOrder: pkg.NewOrderClient(cfg),
+		ClientReservation: pkg.NewReservationClient(cfg),
 	}
 }

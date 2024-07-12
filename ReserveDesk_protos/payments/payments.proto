@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option go_package = "genproto/payments";
+
+package payments;
+
+service Payments{
+    rpc MakePayment(Payment) returns (Id);
+    rpc GetPayments(PaymentsFilter) returns (AllPayments);
+    rpc UpdatePayment(Payment) returns (Void);
+    rpc DeletePayment(Id) returns (Void);
+    rpc GetStatus(Id) returns (Status);
+    rpc ValidatePaymentId(Id) returns (Status);
+}
+
+message Payment {
+	string reservation_id = 1;
+	int64 amount = 2; 
+	string payment_method = 3;
+}
+
+message Id {
+    string Id = 1;
+}
+
+message PaymentsFilter{
+    int64 payments_from = 1;
+    int64 payments_to = 2;
+    int32 limit = 3;
+    int32 offset = 4;
+}
+
+message AllPayments{
+    string id = 1;
+    string reservation_id = 2;
+	int64 amount = 3; 
+	string payment_method = 4;
+    string created_at = 5;
+    string updated_at = 6;
+}
+
+message Void{
+}
+
+message Status {
+    string Payment_status = 1;
+}
+
+message Exists{
+    bool Exists = 1;
+}

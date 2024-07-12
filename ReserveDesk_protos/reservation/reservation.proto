@@ -1,0 +1,83 @@
+syntax  = "proto3";
+
+option go_package = "genproto/reservations";
+
+package reservation;
+
+service ReservationService {
+    rpc CreateReservation(Reservation)   returns (Void) {}
+    rpc UpdateReservation(ReservationUpdate)   returns (Void) {}
+    rpc DeleteReservation(Id)   returns (Void) {}
+    rpc GetReservationById(Id)  returns (ReservationInfo) {}
+    rpc ValidateReservationId(Id) returns (Exists) {}
+    rpc GetAllReservations(ReservationFilter)   returns (Reservations) {}
+    // rpc GetMenuOfRestaurant(Id)  returns (MenuRespons) {} // menu ni tanlash imkoniyati 
+
+    // ------------------------------------------------------------------------------------------
+    // rpc CheckingReservation() returns () {} // Bronning mavjudligini tekshirish.
+    // rpc Reservations()        returns () {} // Bronlar ro'yxatini olish.
+    // rpc PaymingReservation(BronID)  returns (Exists) {} // joyga to`lov qilish 
+    // -------------------------------------------------------------------------------------------
+}
+
+message Id {
+    string id = 1;
+}
+
+message MenuRespons {
+    string id = 1;
+    string item_type = 2; 
+    string name = 3;
+    int32 price = 4;
+    string description = 5;
+    string restaurant_id = 6;
+    string created_at = 7;
+    string updated_at = 8;
+}
+
+message Exists {
+    bool Exists = 1;
+}
+
+message Void{}
+
+message ReservationUpdate {
+    string id = 1;
+    string restaurant_id = 2;
+    string arriving_time = 3;
+    string user_id = 4;
+    int32  number_of_seats = 5;
+}
+
+
+message ReservationInfo{
+    string id = 1;
+    string restaurant_id = 2;
+    string arriving_time = 3;
+    string user_id = 4;
+    int32  number_of_seats = 5;
+    string created_at = 6;
+    string updated_at = 7;
+}
+
+message Reservations{
+    repeated ReservationInfo reservations =1;
+}
+
+message Reservation {
+    string restaurant_id = 1;
+    string arriving_time = 2;
+    string user_id = 3;
+    int32  number_of_seats = 4;
+}
+
+message ReservationFilter {
+    string created_at = 1;
+    int32  number_of_seats = 2;
+    string restaurant_id = 3;
+    string arriving_time = 4;
+    string user_id = 5;
+    int32 limit = 6;
+    int32 offset = 7;
+}
+
