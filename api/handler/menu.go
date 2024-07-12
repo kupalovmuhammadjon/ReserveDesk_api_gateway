@@ -3,92 +3,148 @@ package handler
 import (
 	"api_gateway_service/genproto/menu"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
 
+// CreateMenu
+// @Summary Create Menu
+// @Description This API for creating Menu
+// @Tags menu
+// @Accept json
+// @Produce json
+// @Param Menu body menu.CreateMenu true "Menu"
+// @Success 201 {object} string "ok"
+// @Failure 400 {object} object
+// @Failure 500 {object} object
+// @Router /menu [post]
 func (h *Handler) CreateMenu(c *gin.Context) {
 	req := &menu.MenuRequest{}
 	if err := c.ShouldBind(req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
+		log.Printf("err: %+v", err)
 	}
 	resp, err := h.Menu.CreateMenu(c, req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+		log.Printf("err: %+v", err)
 	}
 	c.JSON(http.StatusCreated, resp)
 }
+
+// UpdateMenu
+// @Summary Update Menu
+// @Description This API for updating Menu
+// @Tags menu
+// @Accept json
+// @Produce json
+// @Param Menu body menu.UpdateMenu true "Menu"
+// @Success 201 {object} string "ok"
+// @Failure 400 {object} object
+// @Failure 500 {object} object
+// @Router /menu/{id} [put]
 func (h *Handler) UpdateMenu(c *gin.Context) {
 	req := &menu.MenuUpateRequest{}
 	if err := c.ShouldBind(req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
+		log.Printf("err: %+v", err)
 	}
 	req.Id = c.Param("id")
 	if req.Id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "id is empty"})
-		return
 	}
 	resp, err := h.Menu.UpdateMenu(c, req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+		log.Printf("err: %+v", err)
 	}
 	c.JSON(http.StatusOK, resp)
 }
+
+// DeleteMenu
+// @Summary Delete Menu
+// @Description This API for deleting Menu
+// @Tags menu
+// @Accept json
+// @Produce json
+// @Param Menu body menu.DeleteMenu true "Menu"
+// @Success 201 {object} string "ok"
+// @Failure 400 {object} object
+// @Failure 500 {object} object
+// @Router /menu/{id} [delete]
 func (h *Handler) DeleteMenu(c *gin.Context) {
 	req := &menu.Id{}
 	if err := c.ShouldBind(req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
+		log.Printf("err: %+v", err)
 	}
 	req.Id = c.Param("id")
 	if req.Id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "id is empty"})
-		return
 	}
 	resp, err := h.Menu.DeleteMenu(c, req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+		log.Printf("err: %+v", err)
 	}
 	c.JSON(http.StatusOK, resp)
 
 }
+
+// GetByIdMenu
+// @Summary Get Menu
+// @Description This API for get wth id Menu
+// @Tags menu
+// @Accept json
+// @Produce json
+// @Param Menu body menu.GetByIdMenu true "Menu"
+// @Success 201 {object} string "ok"
+// @Failure 400 {object} object
+// @Failure 500 {object} object
+// @Router /get/menu/{id} [get]
 func (h *Handler) GetByIdMenu(c *gin.Context) {
 	req := &menu.Id{}
 	if err := c.ShouldBind(req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
+		log.Printf("err: %+v", err)
 	}
 	req.Id = c.Param("id")
 	if req.Id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "id is empty"})
-		return
 	}
 	resp, err := h.Menu.GetByIdMenu(c, req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+		log.Printf("err: %+v", err)
 	}
 	c.JSON(http.StatusOK, resp)
 }
+
+// GetAllMenu
+// @Summary GetAll Menu
+// @Description This API for get wth id Menu
+// @Tags menu
+// @Accept json
+// @Produce json
+// @Param Menu body menu.GetAllMenu true "Menu"
+// @Success 201 {object} string "ok"
+// @Failure 400 {object} object
+// @Failure 500 {object} object
+// @Router /getAll/menu/{id} [get]
 func (h *Handler) GetAllMenu(c *gin.Context) {
 	req := &menu.MenuFilter{}
 	if err := c.ShouldBind(req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
+		log.Printf("err: %+v", err)
 	}
 	req.Id = c.Param("id")
 	if req.Id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "id is empty"})
-		return
 	}
 	resp, err := h.Menu.GetAllMenu(c, req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+		log.Printf("err: %+v", err)
 	}
 	c.JSON(http.StatusOK, resp)
 }
